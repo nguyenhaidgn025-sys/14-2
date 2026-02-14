@@ -54,7 +54,4 @@ function toggleCard() {
 }
 
 /* hỗ trợ cả PC + mobile */
-cardValentine.addEventListener("click", toggleCard)
-cardValentine.addEventListener("touchstart", toggleCard)
-
-)
+cardValentine.addEventListener("pointerdown", toggleCard)
