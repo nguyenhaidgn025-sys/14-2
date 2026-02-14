@@ -41,14 +41,20 @@ openBtn.addEventListener("click", () => {
 
 var cardValentine = document.querySelector(".cardValentine")
 
-cardValentine.addEventListener("click", () => {
+function toggleCard() {
     cardValentine.classList.toggle("open")
 
-    if(cardValentine.className.indexOf("open") != -1) {
+    if (cardValentine.classList.contains("open")) {
         setTimeout(effectWrite, 500)
     } else {
         setTimeout(() => {
             document.querySelector(".letterContent").innerHTML = ""
-        }, 1000)
+        }, 500)
     }
-})
+}
+
+/* hỗ trợ cả PC + mobile */
+cardValentine.addEventListener("click", toggleCard)
+cardValentine.addEventListener("touchstart", toggleCard)
+
+)

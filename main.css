@@ -704,3 +704,12 @@ html, body {
         transform: none;
     }
 }
+.cardValentine {
+    z-index: 999;
+    pointer-events: auto;
+}
+.cloud,
+.cloud1,
+.cloud2 {
+    pointer-events: none;
+}
