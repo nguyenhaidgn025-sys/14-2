@@ -610,3 +610,97 @@ html, body {
         top: 50%;
     }
 }
+/* ================= MOBILE OPTIMIZATION ================= */
+@media (max-width: 768px) {
+
+    /* Tổng thể */
+    .container {
+        overflow: hidden;
+    }
+
+    /* Heart bay – chuyển sang % */
+    .paperHeart {
+        height: 60px;
+    }
+
+    .paperHeart1 { left: 5%; }
+    .paperHeart2 { left: 20%; }
+    .paperHeart3 { left: 40%; }
+    .paperHeart4 { left: 60%; }
+    .paperHeart5 { left: 75%; }
+    .paperHeart6 { left: 90%; }
+
+    /* Tiêu đề */
+    .boxTitle {
+        font-size: 48px;
+        text-align: center;
+    }
+
+    .partTitle {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Nút mở */
+    .btnBox {
+        width: 280px;
+        height: 120px;
+    }
+
+    .openBtn {
+        font-size: 24px;
+    }
+
+    /* CARD */
+    .cardValentine,
+    .cardValentine.active {
+        width: 90%;
+        height: 420px;
+    }
+
+    /* Chia card theo chiều dọc */
+    .cardValentine .left,
+    .cardValentine .right {
+        width: 100%;
+        left: 0;
+    }
+
+    .cardValentine .right {
+        top: 50%;
+        height: 50%;
+        border-left: none;
+        border-top: 8px solid #c9413f;
+    }
+
+    /* Nội dung thư */
+    .rightContent {
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    /* Mặt trước card */
+    .boxTitleCard {
+        height: 200px;
+        width: 200px;
+    }
+
+    .boxTitleCard::before {
+        height: 180px;
+        width: 180px;
+    }
+
+    .boxTitleCard::after {
+        height: 160px;
+        width: 160px;
+    }
+
+    .des {
+        font-size: 16px;
+        bottom: 20px;
+    }
+
+    /* TẮT 3D xoay để mượt hơn */
+    .cardValentine.active.open .left {
+        transform: none;
+    }
+}
