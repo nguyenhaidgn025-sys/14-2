@@ -1,3 +1,4 @@
+alert("JS đã chạy");
 var bgMusic = document.getElementById("bgMusic")
 
 // Thay đổi nội dung búc thư ở đây
