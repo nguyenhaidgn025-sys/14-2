@@ -1,8 +1,5 @@
-
-var bgMusic = document.getElementById("bgMusic")
-
 // Thay đổi nội dung búc thư ở đây
-var letterContent = "Chúc mừng ngày Valentine! Hy vọng em sẽ có một ngày thật vui vẻ và tràn đầy yêu thương. Cảm ơn em đã cùng anh đồng hành trong khoảng thời gian vừa qua, anh biết anh hong phải là người hoàn hảo nhưng mà anh sẽ yêu em bằng tất cả những gì anh có và bằng một cách chân thành nhất. Anh hy vọng rằng tụi mình sẽ ở bên nhau nhiều cái valentile nữa. Yêu em rất nhiều!"
+var letterContent = "Đây là nội dung của bức thư mà người ấy sẽ đọc được. Hãy viết gì đó cho người đó thôi nào. Cảm ơn bạn đã xem"
 
 // Tốc độ viết chữ. Số càng nhỏ tốc độ càng nhanh. 50 là tốc độ khá phù hợp
 durationWrite = 50 
@@ -28,48 +25,27 @@ window.addEventListener("load", () => {
 
 var openBtn = document.querySelector(".openBtn")
 var bgMusic = document.getElementById("bgMusic")
-openBtn.addEventListener("pointerdown", (e) => {
-    e.preventDefault();
-
-    document.querySelector(".cardValentine").classList.add("active");
-    document.querySelector(".container").classList.add("close");
-
-    bgMusic.currentTime = 0;
-    bgMusic.volume = 0.7;
-    bgMusic.play().catch(() => {});
-});
-
+openBtn.addEventListener("click", () => {
+    document.querySelector(".cardValentine").classList.add("active")
+    document.querySelector(".container").classList.add("close")
+     bgMusic.volume = 0.6   // âm lượng 0 → 1
+    bgMusic.play()
+})
 
 var cardValentine = document.querySelector(".cardValentine")
 
-let isAnimating = false;
+cardValentine.addEventListener("click", () => {
+    cardValentine.classList.toggle("open")
 
-function toggleCard(e) {
-    if (isAnimating) return;
-    if (!cardValentine.classList.contains("active")) return;
-
-    isAnimating = true;
-    cardValentine.classList.toggle("open");
-
-    if (cardValentine.classList.contains("open")) {
-        setTimeout(effectWrite, 500);
+    if(cardValentine.className.indexOf("open") != -1) {
+        setTimeout(effectWrite, 500)
     } else {
         setTimeout(() => {
-            document.querySelector(".letterContent").innerHTML = "";
-        }, 500);
+            document.querySelector(".letterContent").innerHTML = ""
+        }, 1000)
     }
-
-    setTimeout(() => {
-        isAnimating = false;
-    }, 700);
+})
+if(cardValentine.className.indexOf("open") != -1) {
+    setTimeout(effectWrite, 500)
+    bgMusic.play()
 }
-
-
-
-/* hỗ trợ cả PC + mobile */
-cardValentine.addEventListener("pointerdown", (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    toggleCard(e);
-});
-
