@@ -713,3 +713,25 @@ html, body {
 .cloud2 {
     pointer-events: none;
 }
+.boxCloud {
+    pointer-events: none;
+}
+
+.cardValentine,
+.cardValentine * {
+    pointer-events: auto;
+}
+/* FIX MOBILE TOUCH */
+.boxCloud,
+.cloud,
+.cloud1,
+.cloud2 {
+    pointer-events: none;
+}
+
+.cardValentine {
+    pointer-events: auto;
+    z-index: 10;
+    touch-action: manipulation;
+    cursor: pointer;
+}

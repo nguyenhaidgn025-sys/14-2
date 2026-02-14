@@ -1,58 +1,55 @@
-alert("JS đã chạy");
-var bgMusic = document.getElementById("bgMusic")
+const container = document.querySelector(".container");
+const openBtn = document.querySelector(".openBtn");
+const card = document.querySelector(".cardValentine");
+const letterBox = document.querySelector(".letterContent");
 
-// Thay đổi nội dung búc thư ở đây
-var letterContent = "Chúc mừng ngày Valentine! Hy vọng em sẽ có một ngày thật vui vẻ và tràn đầy yêu thương. Cảm ơn em đã cùng anh đồng hành trong khoảng thời gian vừa qua, anh biết anh hong phải là người hoàn hảo nhưng mà anh sẽ yêu em bằng tất cả những gì anh có và bằng một cách chân thành nhất. Anh hy vọng rằng tụi mình sẽ ở bên nhau nhiều cái valentile nữa. Yêu em rất nhiều!"
+// ===== NỘI DUNG THƯ =====
+const letterText = `
+💖 Gửi người đặc biệt 💖
 
-// Tốc độ viết chữ. Số càng nhỏ tốc độ càng nhanh. 50 là tốc độ khá phù hợp
-durationWrite = 50 
+Anh không giỏi nói những lời hoa mỹ,
+nhưng anh thật lòng khi viết những dòng này.
 
-// Hiệu ứng gõ chữ
+Cảm ơn vì đã đến,
+vì đã ở lại,
+và vì đã làm thế giới của anh dịu dàng hơn.
 
-function effectWrite () {
-    var boxLetter = document.querySelector(".letterContent")
-    letterContentSplited = letterContent.split("")
-    
-    letterContentSplited.forEach((val, index) => {
-        setTimeout(() => {
-            boxLetter.innerHTML += val    
-        }, durationWrite* index)
-    })
-}
+💌 Valentine này,
+chúc em luôn cười thật nhiều.
+`;
 
-window.addEventListener("load", () => {
-    setTimeout(() => {
-        document.querySelector(".container").classList.add("active")
-    }, 500)
-})
+// ===== HIỆN CARD =====
+openBtn.addEventListener("pointerdown", (e) => {
+    e.preventDefault();
+    container.classList.add("active", "open");
+    card.classList.add("active");
+});
 
-var openBtn = document.querySelector(".openBtn")
-var bgMusic = document.getElementById("bgMusic")
-openBtn.addEventListener("click", () => {
-    document.querySelector(".cardValentine").classList.add("active")
-    document.querySelector(".container").classList.add("close")
+// ===== MỞ / ĐÓNG THIỆP =====
+card.addEventListener("pointerdown", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
 
-    bgMusic.currentTime = 0
-    bgMusic.volume = 0.7
+    const isOpen = card.classList.toggle("open");
 
-    bgMusic.play().catch(err => {
-        console.log("Không phát được nhạc:", err)
-    })
-})
-
-var cardValentine = document.querySelector(".cardValentine")
-
-function toggleCard() {
-    cardValentine.classList.toggle("open")
-
-    if (cardValentine.classList.contains("open")) {
-        setTimeout(effectWrite, 500)
+    if (isOpen) {
+        showLetter();
     } else {
-        setTimeout(() => {
-            document.querySelector(".letterContent").innerHTML = ""
-        }, 500)
+        letterBox.innerHTML = "";
     }
-}
+});
 
-/* hỗ trợ cả PC + mobile */
-cardValentine.addEventListener("pointerdown", toggleCard)
+// ===== HIỆU ỨNG GÕ CHỮ =====
+function showLetter() {
+    letterBox.innerHTML = "";
+    let i = 0;
+
+    const typing = setInterval(() => {
+        letterBox.innerHTML += letterText[i];
+        i++;
+
+        if (i >= letterText.length) {
+            clearInterval(typing);
+        }
+    }, 35);
+}
