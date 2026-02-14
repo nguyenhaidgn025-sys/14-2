@@ -524,10 +524,10 @@ html, body {
 }
 
 .letterContent {
-    font-family: "Pacifico", cursive;
-    font-weight: 400;
-    font-style: normal;
+    font-family: "Dancing Script", "Segoe UI", sans-serif;
+    line-height: 1.6;
 }
+
 
 .cardValentine.active.open {
     top: 50%;
